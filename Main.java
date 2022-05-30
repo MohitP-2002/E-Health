@@ -8,6 +8,7 @@ class Main {
     // constructor
     Main() {
         System.out.println("-----------------------E-Healthify-----------------------");
+        System.out.println();
     }
 
     // global declarations
