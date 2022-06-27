@@ -24,8 +24,8 @@ class Main {
 
     // login validation
     String readString() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        Scanner scan = new Scanner(System.in);
+        return scan.nextLine();
     }
 
     private void pressEnterKeyToContinue() {
@@ -35,6 +35,7 @@ class Main {
             list();
         } catch (Exception e) {
             System.out.println("Press <Enter> Key to Continue..");
+            pressEnterKeyToContinue();
         }
     }
 
@@ -93,10 +94,46 @@ class Main {
     }
 
     void exit() {
-        System.out.println("exit");
+        System.out.println("\nThank you for using the application\n\n Stay Healthy and Safe\n");
+        System.exit(0);
+    }
+
+    void historyPatient() {
+        System.out.print("Enter file name of the patient: ");
+        String fileName = sc.next();
+        String line = null;
+        try {
+            FileReader fwrite = new FileReader(fileName + ".txt");
+            BufferedReader bufferedReader = new BufferedReader(fwrite);
+            System.out.println();
+            System.out.println(".......................INFORMATION OF THE PATIENT.......................  ");
+
+            System.out.println();
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+            pressEnterKeyToContinue();
+            bufferedReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to open file '" + fileName + "'");
+            pressEnterKeyToContinue();
+        } catch (IOException e) {
+            System.out.println("Error reading file '" + fileName + "'");
+            pressEnterKeyToContinue();
+        }
+    }
+    void billPatient(){
+
     }
 
     void help() {
+        System.out.println("E-Healthify introduces the following features:\n");
+        System.out.println("Add File of Patient: Add the patient to the database of our service.\n");
+        System.out.println("History: Retrieve the information of past records of the patient.\n");
+        System.out.println("Bill: Enter the bill issued to the Patient for treatment, medicines etc.\n");
+        System.out.println("Add Diagnostic Information: Enter the information of the diagnosis done to the patient.\n");
+        System.out.println("Help: Help manual for the application\n");
+        System.out.println("Exit: Exits the application\n");
     }
 
     void addDiagnosisInfo() {
@@ -149,11 +186,6 @@ class Main {
         pressEnterKeyToContinue();
     }
 
-    void billPatient() {
-    }
-
-    void historyPatient() {
-    }
 
     void addFile() {
         System.out.print("Enter file name of the patient: ");
@@ -203,7 +235,7 @@ class Main {
             System.out.println();
             bufferedWriter.write(
                     "------------------------------------------------------------------------------------------");
-                    bufferedWriter.newLine();
+            bufferedWriter.newLine();
             bufferedWriter.close();
             System.out.println("The patient's information is recorded successfully");
             System.err.println(

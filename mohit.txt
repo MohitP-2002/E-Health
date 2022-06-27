@@ -1,0 +1,14 @@
+Date and Time of Registration: 27/06/2022 15:23:20
+ID: 6ee8c28c-25c0-4b4b-ba4b-78a70ab37b13
+Name: Mohit Periwal
+Address: Babupara
+Contact Number: 8944877291
+Age: 20
+Sex: M
+Major diseases suffered: none
+------------------------------------------------------------------------------------------
+Date of issuance is: 27/06/2022 15:25:43
+Name of the Doctor: Sanjay rathi
+Specialty of Doctor: ENT
+Symptoms: nose blockage
+Medicines issued: paracetamol
