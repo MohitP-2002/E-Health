@@ -7,8 +7,9 @@ import java.time.LocalDateTime;
 class Main {
     // constructor
     Main() {
-        System.out.println("-----------------------E-Healthify-----------------------");
         System.out.println();
+        System.out.println("-----------------------E-Healthify-----------------------");
+        // System.out.println();
     }
 
     // global declarations
@@ -122,8 +123,58 @@ class Main {
             pressEnterKeyToContinue();
         }
     }
-    void billPatient(){
 
+    void billPatient() {
+        long bedCharges;
+        long noOfDays;
+        long doctorCharge;
+        long serviceCharge;
+        System.out.print("Enter file name of the patient: ");
+        String fileName = sc.next();
+        String line = null;
+        getCurrentTimeUsingDate();
+        try {
+            FileReader fwrite = new FileReader(fileName + ".txt");
+            BufferedReader bufferedReader = new BufferedReader(fwrite);
+            System.out.println();
+            System.out.println(".......................INFORMATION OF THE PATIENT.......................  ");
+
+            System.out.println();
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+            PrintWriter type = new PrintWriter(new BufferedWriter(new FileWriter(fileName + ".txt", true)));
+            getCurrentTimeUsingDate();
+            // Always close files.
+            bufferedReader.close();
+            System.out.println();
+            type.print("...........................................................................");
+
+            System.out.println("The Date and Time of adding the information are: " + dayMonth);
+            type.println("Date of issuance is = " + dayMonth);
+            System.out.print("Number of days Patient stayed in bed: ");
+            noOfDays = sc.nextLong();
+            System.out.print("Bed Charges/day = ");
+            bedCharges = sc.nextLong();
+            System.out.print("Total Bed Charges: " + (noOfDays * bedCharges));
+            type.println("Total Bed Charges = " + (noOfDays * bedCharges));
+            System.out.print("Doctor's Charge = ");
+            doctorCharge = sc.nextLong();
+            type.println("Doctor's fee = " + doctorCharge);
+            System.out.print("Extra Charges involving caretaker charge, food etc = ");
+            serviceCharge = sc.nextLong();
+            type.println("Service Charge = " + serviceCharge);
+            type.println("Total Charge = " + (noOfDays * bedCharges) + doctorCharge + serviceCharge);
+            type.print("...........................................................................");
+            System.out.print("Total Charge = " + (noOfDays * bedCharges) + doctorCharge + serviceCharge);
+            System.out.println(
+                    ".............................................................................................");
+            System.out.println("The patient's Bill information is recorded successfully");
+            type.close();
+        } catch (Exception e) {
+            System.out.println("Unable to open " + fileName);
+        }
+        pressEnterKeyToContinue();
     }
 
     void help() {
@@ -139,7 +190,6 @@ class Main {
     void addDiagnosisInfo() {
         String doctorName;
         String specialty;
-        String test;
         String symptoms;
         String medicines;
         System.out.print("Enter file name of the patient: ");
@@ -185,7 +235,6 @@ class Main {
         }
         pressEnterKeyToContinue();
     }
-
 
     void addFile() {
         System.out.print("Enter file name of the patient: ");
